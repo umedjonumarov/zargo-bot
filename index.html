@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZarGo Shop</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; margin: 0; padding: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .card { background: #2c2c2c; padding: 15px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .price { color: #f39c12; font-weight: bold; margin: 10px 0; }
+        .btn { background: #f39c12; color: white; border: none; padding: 10px; width: 100%; border-radius: 10px; font-weight: bold; }
+        #order-btn { position: fixed; bottom: 20px; left: 5%; width: 90%; background: #27ae60; padding: 15px; border-radius: 15px; border: none; color: white; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+    <h1>ZarGo Market</h1>
+    <div class="grid">
+        <div class="card"><h3>🌾 Ун</h3><p class="price">65,000 сўм</p><button class="btn" onclick="add('Ун', 65000)">Қўшиш</button></div>
+        <div class="card"><h3>🌻 Ёғ</h3><p class="price">18,000 сўм</p><button class="btn" onclick="add('Ёғ', 18000)">Қўшиш</button></div>
+        <div class="card"><h3>🍬 Шакар</h3><p class="price">12,000 сўм</p><button class="btn" onclick="add('Шакар', 12000)">Қўшиш</button></div>
+        <div class="card"><h3>🍝 Макарон</h3><p class="price">10,000 сўм</p><button class="btn" onclick="add('Макарон', 10000)">Қўшиш</button></div>
+    </div>
+    <button id="order-btn" onclick="send()">Буюртма бериш</button>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let cart = [];
+        function add(n, p) { cart.push({n, p}); document.getElementById('order-btn').style.display = 'block'; }
+        function send() { tg.sendData(JSON.stringify(cart)); tg.close(); }
+    </script>
+</body>
+</html>
