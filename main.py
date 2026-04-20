@@ -15,7 +15,7 @@ async def start(message: types.Message):
     # Диққат: index.html файлинг қаердалигини кўрсатамиз
     # Ҳозирча тест учун оддий тугма қиламиз
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Do'konni ochish 🛍", web_app=WebAppInfo(url="https://google.com"))] 
+        [InlineKeyboardButton(text="Do'konni ochish 🛍", web_app=WebAppInfo(url="https://zargo-bot.onrender.com"))] 
     ])
     await message.answer("ZarGo дўконига хуш келибсиз!", reply_markup=markup)
 
